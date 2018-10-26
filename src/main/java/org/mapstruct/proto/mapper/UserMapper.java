@@ -18,12 +18,7 @@
  */
 package org.mapstruct.proto.mapper;
 
-import org.mapstruct.CollectionMappingStrategy;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.MappingConstants;
-import org.mapstruct.NullValueCheckStrategy;
-import org.mapstruct.ValueMapping;
+import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 import org.mapstruct.proto.UserProtos;
 import org.mapstruct.proto.protobuf.Permission;
@@ -39,7 +34,18 @@ public interface UserMapper {
     UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
 
 
-    @Mapping(source = "permissions", target = "permissionsList")
+	@Mappings({
+		@Mapping(source = "permissions", target = "permissionsList"),
+//		@Mapping(target = "allFields", ignore = true),
+//		@Mapping(target = "clearField", ignore = true),
+//		@Mapping(target = "clearOneof", ignore = true),
+//		@Mapping(target = "mergeFrom", ignore = true),
+//		@Mapping(target = "idBytes", ignore = true),
+//		@Mapping(target = "emailBytes", ignore = true),
+//		@Mapping(target = "permissionsValueList", ignore = true),
+//		@Mapping(target = "unknownFields", ignore = true),
+//		@Mapping(target = "mergeUnknownFields", ignore = true),
+	})
     UserProtos.UserDTO map(User user);
 
     @Mapping(source = "permissionsList", target = "permissions")
