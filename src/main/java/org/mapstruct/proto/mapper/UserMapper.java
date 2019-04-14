@@ -30,21 +30,26 @@ import org.mapstruct.proto.protobuf.User;
 @Mapper(collectionMappingStrategy = CollectionMappingStrategy.ADDER_PREFERRED,
         nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS)
 public interface UserMapper {
-
     UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
-
 
 	@Mappings({
 		@Mapping(source = "permissions", target = "permissionsList"),
-//		@Mapping(target = "allFields", ignore = true),
-//		@Mapping(target = "clearField", ignore = true),
-//		@Mapping(target = "clearOneof", ignore = true),
-//		@Mapping(target = "mergeFrom", ignore = true),
-//		@Mapping(target = "idBytes", ignore = true),
-//		@Mapping(target = "emailBytes", ignore = true),
-//		@Mapping(target = "permissionsValueList", ignore = true),
-//		@Mapping(target = "unknownFields", ignore = true),
-//		@Mapping(target = "mergeUnknownFields", ignore = true),
+		@Mapping(target = "allFields", ignore = true),
+		@Mapping(target = "clearField", ignore = true),
+		@Mapping(target = "clearOneof", ignore = true),
+		@Mapping(target = "mergeFrom", ignore = true),
+		@Mapping(target = "idBytes", ignore = true),
+		@Mapping(target = "emailBytes", ignore = true),
+		@Mapping(target = "permissionsValueList", ignore = true),
+		@Mapping(target = "unknownFields", ignore = true),
+		@Mapping(target = "mergeUnknownFields", ignore = true),
+
+		// Maps
+		@Mapping(target = "removeMetadata", ignore = true),
+		@Mapping(target = "putAllMetadata", ignore = true),
+		@Mapping(target = "metadataMap", ignore = true),
+		@Mapping(target = "mutableMetadata", ignore = true),
+
 	})
     UserProtos.UserDTO map(User user);
 

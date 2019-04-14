@@ -8,6 +8,7 @@ message UserDTO {
     string id = 1;
     string email = 2;
     repeated PermissionDTO permissions = 3;
+		map<string, string> metadata = 4;
 }
 
 enum PermissionDTO {

@@ -39,6 +39,7 @@ public class ProtobufTest {
         user.setId("");
         user.setEmail("test");
         user.getPermissions().add(Permission.ADMIN);
+        user.getMetadata().put("test", "Map");
 
         UserProtos.UserDTO dto = UserMapper.INSTANCE.map(user);
         UserProtos.UserDTO deserialized = UserProtos.UserDTO.parseFrom(dto.toByteArray());
@@ -47,6 +48,7 @@ public class ProtobufTest {
         Assert.assertEquals("", back.getId());
         Assert.assertEquals("test", back.getEmail());
         Assert.assertTrue(back.getPermissions().contains(Permission.ADMIN));
+        Assert.assertEquals("Map", back.getMetadata().get("test"));
     }
 
 
