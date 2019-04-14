@@ -13,12 +13,16 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    compile 'org.mapstruct:mapstruct-jdk8:1.3.0.Beta1'
-    compile	"org.mapstruct:mapstruct-processor:1.3.0.Beta1"
-    compile 'com.google.protobuf:protobuf-java:3.2.0'
+ext {
+	mapstructVersion = "1.3.0.Final"
+}
 
-    apt 'org.mapstruct:mapstruct-processor:1.3.0.Beta1'
+dependencies {
+    compile "org.mapstruct:mapstruct-jdk8:$mapstructVersion"
+    compile	"org.mapstruct:mapstruct-processor:$mapstructVersion"
+    compile 'com.google.protobuf:protobuf-java:3.6.1'
+
+    apt "org.mapstruct:mapstruct-processor:$mapstructVersion"
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
